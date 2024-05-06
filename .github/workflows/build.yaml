@@ -24,8 +24,17 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Compress build folder
+        run: zip -r web.zip out
+
       - name: Upload Next.js build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: web
-          path: out
+          name: web.zip
+          path: web.zip
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: web.zip
