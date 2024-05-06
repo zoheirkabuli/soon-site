@@ -38,3 +38,4 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/v')
         with:
           files: web.zip
+          name: version ${{ github.ref_name }}
