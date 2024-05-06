@@ -42,3 +42,4 @@ jobs:
         with:
           files: web.zip
           name: version ${{ github.ref_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
